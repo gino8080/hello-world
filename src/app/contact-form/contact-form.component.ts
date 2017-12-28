@@ -7,9 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactFormComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  log(x){
+    console.log(x)
   }
 
 }
