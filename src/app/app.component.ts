@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  recipes = ["patate riso e cozze","carbonara","pasta al pesto"]
-  //recipes = []
+  viewMode = "map";
 
 }
