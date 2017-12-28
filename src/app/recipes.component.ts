@@ -10,7 +10,12 @@ import { RecipesService } from './recipes.service';
         <h2>{{ getTitle() }}</h2>
         <h2 [textContent]="title"></h2>
         <h2>{{title}}</h2>
-        <button class="btn btn-primary">save</button>
+        <button class="btn btn-primary" [class.active]="isActive">save</button>
+        <button class="btn btn-primary" [style.backgroundColor]="bgColor">save</button>
+        <button class="btn btn-primary" [style.backgroundColor]="isActive ? 'blue':'red'">save</button>
+        <div (click)="onDivClicked($event)">
+            <button class="btn btn-primary" (click)="onSave($event)">save</button>
+        </div>
         <ul>
             <li *ngFor="let recipe of recipes"> 
                 {{recipe}}
@@ -25,7 +30,8 @@ import { RecipesService } from './recipes.service';
 export class RecipesComponent{
     //to make an Angular Component we add DECORATORS
     title= "Lista di Ricette";
-
+    isActive=true;
+    bgColor="black";
     //no logic to get datas
     recipes;
 
@@ -37,6 +43,17 @@ export class RecipesComponent{
 
     getTitle(){
         return this.title;
+    }
+
+    //standard DOM event object
+    onSave($event){
+        //Stop Event Bubling
+        $event.stopPropagation();
+        console.log("Clicked",$event)
+    }
+
+    onDivClicked($event){
+        console.log("Div",$event)
     }
 
     //Call an HTTP service
