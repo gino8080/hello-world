@@ -1,4 +1,5 @@
 import {Component} from '@angular/core'
+import { RecipesService } from './recipes.service';
 
 //decorator function
 @Component({
@@ -19,9 +20,18 @@ export class RecipesComponent{
     //to make an Angular Component we add DECORATORS
     title= "Lista di Ricette";
 
-    recipes = ["Riso Patate e cozze","Carbonara","Abbacchio"]
+    //no logic to get datas
+    recipes;
+
+    constructor(service:RecipesService){
+        //let service = new RecipesService(); //too much coupled to the service, not good for testing or changing provider
+        //using dependency we can change the service at runtime or by test
+        this.recipes = service.getRecipes();
+    }
 
     getTitle(){
         return this.title;
     }
+
+    //Call an HTTP service
 }
