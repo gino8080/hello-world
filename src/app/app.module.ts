@@ -3,11 +3,14 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-
+import { RecipesComponent } from './recipes.component';
+import { RecipeComponent } from './recipe/recipe.component'; //Auto Import plugin
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RecipesComponent,
+    RecipeComponent
   ],
   imports: [
     BrowserModule
