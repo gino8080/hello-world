@@ -4,23 +4,22 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'favorite',
   templateUrl: './favorite.component.html',
-  //template : '...' //inline template if less than 5 lines
-  styleUrls: ['./favorite.component.css']
+  styles : [
+    `
+    span{
+      color: red ;
+    }
+    `
+  ], //2 style way - inline
+  styleUrls: ['./favorite.component.css'], //1 style way,
 })
-export class FavoriteComponent implements OnInit {
-  //@Input('is-favorite') isFavorite: boolean; //1 input decorator approach, now is exposed to outside
-  @Input('isFavorite') isSelected: boolean; //1 input decorator approach, now is exposed to outside
-
-  @Output('change') click = new EventEmitter(); //name of the event, new because is 
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class FavoriteComponent {
+  @Input('isFavorite') isSelected: boolean; 
+  @Output('change') click = new EventEmitter();
 
   onClick() { 
     this.isSelected = !this.isSelected;
-    this.click.emit({newValue:this.isSelected}); //argument to pass
+    this.click.emit({newValue:this.isSelected});
   }
 
 }
