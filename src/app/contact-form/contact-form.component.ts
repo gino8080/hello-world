@@ -15,11 +15,11 @@ export class ContactFormComponent{
   submit(f){
     console.log(
       "FORM",
-    f,
-    f.form,
-    f.valid,
-    f.value //json form datas
-  )
+      f,
+      f.form,
+      f.valid,
+      f.value //json form datas
+    )
     
   }
 
