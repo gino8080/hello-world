@@ -10,6 +10,7 @@ import { RecipesService } from './recipes.service';
 import { SummaryPipe } from './summary.pipe';
 import { TitleCasePipe } from './title-case.pipe';
 import { PanelComponent } from './panel/panel.component';
+import { LikeComponent } from './like/like.component';
 
 @NgModule({
   //all the components and Pipes
@@ -20,7 +21,8 @@ import { PanelComponent } from './panel/panel.component';
     FavoriteComponent,
     SummaryPipe,
     TitleCasePipe,
-    PanelComponent
+    PanelComponent,
+    LikeComponent
   ],
   //Array of need module
   imports: [
