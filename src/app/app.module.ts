@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { RecipesComponent } from './recipes.component';
@@ -13,8 +13,10 @@ import { RecipesService } from './recipes.service';
     RecipesComponent,
     RecipeComponent
   ],
+  //Array of need module
   imports: [
-    BrowserModule
+    BrowserModule, //needed for every browser app
+    FormsModule
   ],
   //List of all Dependencies used inthe components
   //Singleton Pattern

@@ -6,16 +6,19 @@ import { RecipesService } from './recipes.service';
     selector:'recipes',
     
     template : `
-       <input #email (keyup.enter)="onKeyUp(email.value)" />
+        <em>manual mode :(</em>
+        <input [value]="email" (keyup.enter)="email = $event.target.value; onKeyUp()" />
+        <em>angular Banana in the box way! [()] :)</em>
+        <input [(ngModel)]="email" (keyup.enter)="onKeyUp()" />
     ` 
 })
 
 export class RecipesComponent{
 
-     onKeyUp(email){
-        
-            console.log(email)
-        
+    email = "gino@mailinator.com";
+
+    onKeyUp(){
+        console.log(this.email)    
     }
 
 }
