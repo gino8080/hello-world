@@ -10,6 +10,7 @@ import { RecipesService } from './recipes.service';
         <h2>{{ getTitle() }}</h2>
         <h2 [textContent]="title"></h2>
         <h2>{{title}}</h2>
+        <button class="btn btn-primary">save</button>
         <ul>
             <li *ngFor="let recipe of recipes"> 
                 {{recipe}}
