@@ -13,6 +13,13 @@ export class ContactFormComponent{
 {
   id:2,name:"Phone"
 }]
+
+contactRadios = [{
+    id:1,name:"email"
+  },
+{
+  id:2,name:"Phone"
+}]
   log(x){
     //control.valid
     console.log(x,x.control)
