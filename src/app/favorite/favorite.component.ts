@@ -4,6 +4,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'favorite',
   templateUrl: './favorite.component.html',
+  //template : '...' //inline template if less than 5 lines
   styleUrls: ['./favorite.component.css']
 })
 export class FavoriteComponent implements OnInit {
