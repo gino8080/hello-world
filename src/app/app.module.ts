@@ -9,6 +9,7 @@ import { RecipeComponent } from './recipe/recipe.component'; //Auto Import plugi
 import { RecipesService } from './recipes.service';
 import { SummaryPipe } from './summary.pipe';
 import { TitleCasePipe } from './title-case.pipe';
+import { PanelComponent } from './panel/panel.component';
 
 @NgModule({
   //all the components and Pipes
@@ -18,7 +19,8 @@ import { TitleCasePipe } from './title-case.pipe';
     RecipeComponent,
     FavoriteComponent,
     SummaryPipe,
-    TitleCasePipe
+    TitleCasePipe,
+    PanelComponent
   ],
   //Array of need module
   imports: [
