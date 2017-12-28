@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { RecipesComponent } from './recipes.component';
+import { FavoriteComponent } from './favorite/favorite.component';
 import { RecipeComponent } from './recipe/recipe.component'; //Auto Import plugin
 import { RecipesService } from './recipes.service';
 import { SummaryPipe } from './summary.pipe';
@@ -14,6 +15,7 @@ import { SummaryPipe } from './summary.pipe';
     AppComponent,
     RecipesComponent,
     RecipeComponent,
+    FavoriteComponent,
     SummaryPipe
   ],
   //Array of need module
