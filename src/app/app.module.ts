@@ -8,6 +8,7 @@ import { FavoriteComponent } from './favorite/favorite.component';
 import { RecipeComponent } from './recipe/recipe.component'; //Auto Import plugin
 import { RecipesService } from './recipes.service';
 import { SummaryPipe } from './summary.pipe';
+import { TitleCasePipe } from './title-case.pipe';
 
 @NgModule({
   //all the components and Pipes
@@ -16,7 +17,8 @@ import { SummaryPipe } from './summary.pipe';
     RecipesComponent,
     RecipeComponent,
     FavoriteComponent,
-    SummaryPipe
+    SummaryPipe,
+    TitleCasePipe
   ],
   //Array of need module
   imports: [

@@ -12,6 +12,10 @@ import { RecipesService } from './recipes.service';
        {{recipe.price | currency:'EUR':true:'3.2-2'}} <br/>
        {{recipe.date | date:'short'}} <br/>
        {{recipe.text | summary:10}} <br/>
+
+       <input type="text" [(ngModel)]="title">
+       <br/>
+       {{title | titleCase}}
     ` 
 })
 
