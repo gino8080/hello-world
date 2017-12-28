@@ -1,12 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'favorite',
   templateUrl: './favorite.component.html',
-  styleUrls: ['./favorite.component.css']
+  styleUrls: ['./favorite.component.css'],
+  inputs : ['isFavorite'] //2 input decorator approach, now is exposed to outside
+  //the problem is it's a string so not good for refactoring
 })
 export class FavoriteComponent implements OnInit {
-  @Input() isFavorite: boolean; //1 input decorator approach, now is exposed to outside
+  isSelected: boolean;
 
   constructor() { }
 
@@ -14,6 +16,6 @@ export class FavoriteComponent implements OnInit {
   }
 
   onClick() { 
-    this.isFavorite = !this.isFavorite;
+    this.isSelected = !this.isSelected;
   }
 }
