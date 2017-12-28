@@ -1,6 +1,5 @@
-<h1>
-  {{ title }}!
-</h1>
-
-<recipes></recipes>
-<favorite></favorite>
+<favorite [isFavorite]="recipe.isFavorite">
+</favorite>
+<br/>
+<favorite [isFavorite]="recipe.isFavorite" (change)="onFavoriteChange()">
+</favorite>
