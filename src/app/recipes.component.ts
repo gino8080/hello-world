@@ -3,13 +3,18 @@ import { RecipesService } from './recipes.service';
 
 //decorator function
 @Component({
-    selector:'recipes', //<recipes> //css selector could be <element>/.class/#id
-    //template : '<h2>{{ "Title :"+title }}</h2>' //databinding 
+    selector:'recipes',
+    
+    
     template : `
         <h2>{{ getTitle() }}</h2>
+        <h2 [textContent]="title"></h2>
+        <h2>{{title}}</h2>
         <ul>
-            <li *ngFor="let recipe of recipes">
+            <li *ngFor="let recipe of recipes"> 
                 {{recipe}}
+                <img src={{imageUrl}}  />
+                <img [src]="imageUrl"  />
             </li> 
         </ul>
     ` //string interpolation 
