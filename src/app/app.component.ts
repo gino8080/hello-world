@@ -7,22 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  recipes;
-
-  loadRecipes(){
-    this.recipes=[
-      {
-    id:1,title:"patate riso e cozze"
-    },
-    {
-      id:1,title:"carbonara"
-    },
-      {id:1,title:"pasta al pesto"}
-    ];
-  }
-
-  trackCourse(index, recipe){
-    recipe ? recipe.id : undefined; 
-  }
+  canSave=true;
 
 }
