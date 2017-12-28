@@ -15,6 +15,7 @@ import { InputFormatDirective } from './input-format.directive';
 import { ZippyComponent } from './zippy/zippy.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { NewRecipeFormComponent } from './new-recipe-form/new-recipe-form.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 
 @NgModule({
   //all the components and Pipes
@@ -30,7 +31,8 @@ import { NewRecipeFormComponent } from './new-recipe-form/new-recipe-form.compon
     InputFormatDirective,
     ZippyComponent,
     ContactFormComponent,
-    NewRecipeFormComponent
+    NewRecipeFormComponent,
+    SignupFormComponent
   ],
   //Array of need module
   imports: [
