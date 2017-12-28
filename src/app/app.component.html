@@ -1,1 +1,20 @@
-<like [likesCount]="10" [isActive]="true"></like>
+<h2>ngIF</h2>
+<div *ngIf="recipes.length > 0">
+    List of Recipes
+</div>
+<div *ngIf="recipes.length <= 0">
+    No Recipes found
+</div>
+
+
+<hr/>
+
+
+<h2>ng-template</h2>
+<div *ngIf="recipes.length > 0; then recipesList else noRecipes"></div>
+<ng-template #recipesList>
+    No Recipes found
+</ng-template>
+<ng-template #noRecipes>
+    No Recipes found
+</ng-template>

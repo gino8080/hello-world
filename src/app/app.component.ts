@@ -7,13 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  recipe = {
-    title : "Titolo",
-    isFavorite : true
-  }
+  //recipes = ["patate riso e cozze","carbonara","pasta al pesto"]
+  recipes = []
 
-  onFavoriteChanged(eventArgs:FavoriteChangedEventArgs){
-    console.log("changed",eventArgs)
-    
-  }
 }
