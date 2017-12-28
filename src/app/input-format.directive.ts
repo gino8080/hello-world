@@ -10,8 +10,8 @@ import { format } from 'util';
   selector: '[appInputFormat]' //attrbute selector
 })
 export class InputFormatDirective {
-  @Input('format') format : Input;
-  
+  @Input('appInputFormat') format : Input;
+
   constructor(private el:ElementRef) { }
   
   //@HostListener('eventName') 
