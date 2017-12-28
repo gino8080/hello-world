@@ -6,12 +6,15 @@ import { AppComponent } from './app.component';
 import { RecipesComponent } from './recipes.component';
 import { RecipeComponent } from './recipe/recipe.component'; //Auto Import plugin
 import { RecipesService } from './recipes.service';
+import { SummaryPipe } from './summary.pipe';
 
 @NgModule({
+  //all the components and Pipes
   declarations: [
     AppComponent,
     RecipesComponent,
-    RecipeComponent
+    RecipeComponent,
+    SummaryPipe
   ],
   //Array of need module
   imports: [
