@@ -5,25 +5,16 @@ import { RecipesService } from './recipes.service';
 @Component({
     selector:'recipes',
     
-    
     template : `
-       <input (keyup)="onKeyUp($event)" />
-       <input (keyup.enter)="onKeyUpEnter($event)" />
+       <input #email (keyup.enter)="onKeyUp(email.value)" />
     ` 
 })
 
 export class RecipesComponent{
-   
-    onKeyUp($event){
-        //console.log("keyup",$event);
-        if($event.keyCode===13){
-            console.log("ENTER pressed")
-        }
-    }
 
-     onKeyUpEnter($event){
+     onKeyUp(email){
         
-            console.log("KEYPRESS.ENTER")
+            console.log(email)
         
     }
 
