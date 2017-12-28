@@ -14,6 +14,22 @@ export class AppComponent {
     id:1,title:"carbonara"
   },
     {id:1,title:"pasta al pesto"}
-  ]
+  ];
+
+  onAdd(){
+    this.recipes.push({
+      id:4,
+      title:"new recipe"
+    })
+  }
+
+  onRemove(recipe){
+    let index = this.recipes.indexOf(recipe)
+    this.recipes.splice(index,1);
+  }
+
+  onChange(recipe){
+   recipe.title="Changed!"
+  }
 
 }
