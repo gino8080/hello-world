@@ -11,6 +11,7 @@ import { SummaryPipe } from './summary.pipe';
 import { TitleCasePipe } from './title-case.pipe';
 import { PanelComponent } from './panel/panel.component';
 import { LikeComponent } from './like/like.component';
+import { InputFormatDirective } from './input-format.directive';
 
 @NgModule({
   //all the components and Pipes
@@ -22,7 +23,8 @@ import { LikeComponent } from './like/like.component';
     SummaryPipe,
     TitleCasePipe,
     PanelComponent,
-    LikeComponent
+    LikeComponent,
+    InputFormatDirective
   ],
   //Array of need module
   imports: [
