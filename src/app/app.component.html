@@ -1,8 +1,6 @@
-<button (click)="onAdd()">ADD</button>
+<button (click)="loadRecipes()">Load Recipes</button>
 <ul>
-    <li *ngFor="let recipe of recipes; index as i; even as isEven">
-        {{i}} - {{recipe.title}}
-        <button (click)="onRemove(recipe)">remove</button>
-        <button (click)="onChange(recipe)">edit</button>
+    <li *ngFor="let recipe of recipes; trackBy: trackCourse">
+        {{recipe.title}}
     </li>
 </ul>
