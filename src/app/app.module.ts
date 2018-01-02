@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms'; 
 
 import { AppComponent } from './app.component';
 import { RecipesComponent } from './recipes.component';
@@ -37,7 +37,8 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
   //Array of need module
   imports: [
     BrowserModule, //needed for every browser app
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule //needed for Reactive form
   ],
   //List of all Dependencies used inthe components
   //Singleton Pattern
