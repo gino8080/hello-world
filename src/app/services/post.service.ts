@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 
 @Injectable()
 export class PostService {
+  //wrong url, error
+  //private url = "https://xxxjsonplaceholder.typicode.com/posts";
   private url = "https://jsonplaceholder.typicode.com/posts";
 
   constructor(private http:Http) { 
