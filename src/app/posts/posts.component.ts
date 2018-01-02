@@ -11,13 +11,19 @@ export class PostsComponent implements OnInit {
   posts :any[];
   private url = "https://jsonplaceholder.typicode.com/posts";
 
-  //private so is accessible also in other methods of the class
+  //constructor should be small and fast
   constructor(private http:Http){
-    http.get(this.url).subscribe((response)=>{
+    
+  }
+
+  //when found it's called onInit
+  ngOnInit(){
+    this.http.get(this.url).subscribe((response)=>{
       this.posts = response.json();
     })
   }
 
+  //lifecycle events component hooks
   createPost(input: HTMLInputElement){
     
     let post = {
