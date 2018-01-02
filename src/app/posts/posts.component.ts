@@ -33,19 +33,14 @@ export class PostsComponent implements OnInit {
       })
   }
 
-  updatePost(post){
-    //.patch => update only few properties
-    this.http.patch(this.url+'/'+post.id,JSON.stringify({isRead:true}))
+  deletePost(post){
+    //no body on delete method
+    this.http.delete(this.url+'/'+post.id)
       .subscribe(response=>{
         console.log(response.json())
+        let index = this.posts.indexOf(post)
+        this.posts.splice(index,1);
       })
-
-    //.put => update all the obejct
-    /*this.http.put(this.url,JSON.stringify(post))
-      .subscribe(response=>{
-        console.log(response.json())
-      })
-      */
   }
 
 }
