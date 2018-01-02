@@ -10,20 +10,17 @@ export class UsernameValidators{
     }   
 
     //Check username already taken
-    //Pronlerm with return value
     static shouldBeUnique(control:AbstractControl) : Promise<ValidationErrors | null> {
         return new Promise((resolve,reject)=>{
-            resolve(true);
-            //or reject({message:'why it failed'})
+            console.log("checink username..")
+            //simulating an async operation
+            setTimeout(()=>{
+                if(control.value==="gino"){
+                    resolve({shouldBeUnique:true}); 
+                }else{
+                    resolve(null)
+                }
+            },2000)
         })
-        
-        //simulating an async operation
-        setTimeout(()=>{
-            if(control.value==="gino"){
-            return {shouldBeUnique:true}; 
-            }
-            return null;
-        },2000)
-        
     }
 }
