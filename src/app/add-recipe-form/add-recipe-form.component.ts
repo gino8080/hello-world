@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormArray, FormControl,FormBuilder,Validators} from '@angular/forms';
+import { FormGroup, FormArray, FormControl,FormBuilder,Validators, ReactiveFormsModule} from '@angular/forms';
 
 
 @Component({
@@ -33,6 +33,10 @@ export class AddRecipeFormComponent {
       }),
       topics : fb.array([])
     })
+  }
+
+  get topics(){
+    return this.form.get("topics") as FormArray
   }
 
 }
