@@ -3,8 +3,9 @@ import { Http } from '@angular/http';
 
 import { Observable } from "rxjs/Observable" //2 add Observables from rxjs
 import 'rxjs/add/operator/catch'; //1 add the catch methods on http obesrvables
-import { AppError } from '../common/app.error'; //3 add AppError 
+import { AppError } from '../common/app-error'; //3 add AppError 
 import { NotFoundError } from '../common/not-found-error';
+import { BadInput } from '../common/bad-input';
 
 @Injectable()
 export class PostService {
@@ -22,6 +23,10 @@ export class PostService {
 
   createPosts(post){
     return this.http.post(this.url,JSON.stringify(post))
+      .catch((error:Response)=>{
+        if(error.status===400)
+          return Observable.throw(new BadInput(error))
+      })
   }
 
   updatePost(post){
