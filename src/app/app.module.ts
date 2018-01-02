@@ -17,6 +17,7 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { NewRecipeFormComponent } from './new-recipe-form/new-recipe-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { AddRecipeFormComponent } from './add-recipe-form/add-recipe-form.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   //all the components and Pipes
@@ -34,7 +35,8 @@ import { AddRecipeFormComponent } from './add-recipe-form/add-recipe-form.compon
     ContactFormComponent,
     NewRecipeFormComponent,
     SignupFormComponent,
-    AddRecipeFormComponent
+    AddRecipeFormComponent,
+    ChangePasswordComponent
   ],
   //Array of need module
   imports: [
