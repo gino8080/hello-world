@@ -8,4 +8,22 @@ export class UsernameValidators{
 
         return null;
     }   
+
+    //Check username already taken
+    //Pronlerm with return value
+    static shouldBeUnique(control:AbstractControl) : Promise<ValidationErrors | null> {
+        return new Promise((resolve,reject)=>{
+            resolve(true);
+            //or reject({message:'why it failed'})
+        })
+        
+        //simulating an async operation
+        setTimeout(()=>{
+            if(control.value==="gino"){
+            return {shouldBeUnique:true}; 
+            }
+            return null;
+        },2000)
+        
+    }
 }
