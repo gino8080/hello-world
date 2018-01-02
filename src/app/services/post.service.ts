@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
+import { Observable } from "rxjs/Observable" //2 add Observables from rxjs
+import 'rxjs/add/operator/catch'; //1 add the catch methods on http obesrvables
+import { AppError } from '../common/app.error'; //3 add AppError 
+import { NotFoundError } from '../common/not-found-error';
+
 @Injectable()
 export class PostService {
   //wrong url, error
@@ -25,5 +30,13 @@ export class PostService {
 
   deletePost(postId){
      return this.http.delete(this.url+'/'+postId)
+     //.catch added by rxjs
+     .catch((error:Response) => { 
+       if(error.status===404){
+         return Observable.throw(new NotFoundError())
+       }
+       //Observable by rxjs
+        return Observable.throw(new AppError(error)) //send the error to the custom Error class
+     })
   }
 }
