@@ -1,4 +1,8 @@
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="login()">
+    <div *ngIf="form.errors" class="alert alert-danger">
+        Credentials invalid!
+        <!-- <div *ngIf="username.errors.required">Required</div> -->
+    </div>
     <div class="form-group">
         <label for="username">Username</label>
         <input formControlName="username" id="username" type="text" class="form-control">
