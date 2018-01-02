@@ -20,6 +20,7 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { AddRecipeFormComponent } from './add-recipe-form/add-recipe-form.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PostsComponent } from './posts/posts.component';
+import { PostService } from './services/post.service';
 
 @NgModule({
   //all the components and Pipes
@@ -52,7 +53,8 @@ import { PostsComponent } from './posts/posts.component';
   //List of all Dependencies used inthe components
   //Singleton Pattern
   providers: [
-    RecipesService
+    RecipesService,
+    PostService
   ],
   bootstrap: [AppComponent]
 })
