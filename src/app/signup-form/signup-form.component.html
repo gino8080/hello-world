@@ -2,7 +2,8 @@
     <div class="form-group">
         <label for="username">Username</label>
         <input formControlName="username" id="username" type="text" class="form-control">
-        <!-- ngModel  and #username Dont work in reactive form! -->
+        <!-- pending property duting async operations.. -->
+        <div *ngIf="username.pending">checking username..</div>
         <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
             <div *ngIf="username.errors.required">Required</div>
             <div *ngIf="username.errors.minlength">Min Lenght! {{username.errors.minlength.requiredLength}}</div>
