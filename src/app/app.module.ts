@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms'; 
 
@@ -18,6 +19,7 @@ import { NewRecipeFormComponent } from './new-recipe-form/new-recipe-form.compon
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { AddRecipeFormComponent } from './add-recipe-form/add-recipe-form.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   //all the components and Pipes
@@ -36,13 +38,16 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     NewRecipeFormComponent,
     SignupFormComponent,
     AddRecipeFormComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    PostsComponent,
+    PostsComponent
   ],
   //Array of need module
   imports: [
     BrowserModule, //needed for every browser app
     FormsModule,
-    ReactiveFormsModule //needed for Reactive form
+    ReactiveFormsModule, //needed for Reactive form
+    HttpModule //instead of importing Http as single provider
   ],
   //List of all Dependencies used inthe components
   //Singleton Pattern
