@@ -1,55 +1,16 @@
+import { DataService } from './data.service';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
-import { Observable } from "rxjs/Observable" //2 add Observables from rxjs
-import 'rxjs/add/operator/catch'; //1 add the catch methods on http obesrvables
-import { AppError } from '../common/app-error'; //3 add AppError 
-import { NotFoundError } from '../common/not-found-error';
-import { BadInput } from '../common/bad-input';
-
 @Injectable()
-export class PostService {
-  //wrong url, error
-  //private url = "https://xxxjsonplaceholder.typicode.com/posts";
-  private url = "xxhttps://jsonplaceholder.typicode.com/posts";
+export class PostService extends DataService{
+  //1 removed url
+  //private url = "https://jsonplaceholder.typicode.com/posts";
 
-  constructor(private http:Http) { 
-
+  //2 removed private
+  constructor(http:Http) { 
+    //3 need super to create the inherited BASE class
+    super("https://jsonplaceholder.typicode.com/posts",http);
   }
 
-  getPosts(){
-    return this.http.get(this.url)
-    .catch((error:Response)=>{
-          throw error;
-      })
-  }
-
-  createPosts(post){
-    return this.http.post(this.url,JSON.stringify(post))
-      .catch(this.handleError) //not called()! just referenced
-  }
-
-  updatePost(post){
-     return this.http.put(this.url,JSON.stringify(post))
-  }
-
-  deletePost(postId){
-     return this.http.delete(this.url+'/'+postId)
-     //.catch added by rxjs
-     .catch(this.handleError) //not called()! just referenced
-  }
-
-  //global error mangament function
-  //private becus used internally by this class
-  private handleError(error:Response){
-    if(error.status===400)
-      return Observable.throw(new BadInput(error))
-
-    if(error.status===404){
-      return Observable.throw(new NotFoundError())
-    }
-    
-    //Observable by rxjs
-    return Observable.throw(new AppError(error)) //send the error to the custom Error class
-  }
 }

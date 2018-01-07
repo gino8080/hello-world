@@ -22,7 +22,7 @@ export class PostsComponent implements OnInit {
 
   //when found it's called onInit
   ngOnInit(){
-    this.service.getPosts()
+    this.service.getAll()
     .subscribe(
       (response)=>{
         this.posts = response.json();
@@ -36,7 +36,7 @@ export class PostsComponent implements OnInit {
       //description ... other values
     }
     input.value = '';
-    this.service.createPosts(JSON.stringify(post))
+    this.service.create(JSON.stringify(post))
       .subscribe(
         (response)=>{
           post['id'] = response.json().id; //['id'] to avoid ts error 
@@ -55,14 +55,14 @@ export class PostsComponent implements OnInit {
   }
 
   updatePost(post){
-    this.service.updatePost(post).subscribe(response=>{
+    this.service.update(post).subscribe(response=>{
         console.log(response.json())
       })
   }
 
   deletePost(post){
     //no body on delete method
-    this.service.deletePost(post.id)
+    this.service.delete(post.id)
       .subscribe(
       (response)=>{
         console.log(response.json())
