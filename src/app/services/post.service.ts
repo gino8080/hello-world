@@ -26,13 +26,7 @@ export class PostService {
 
   createPosts(post){
     return this.http.post(this.url,JSON.stringify(post))
-      .catch((error:Response)=>{
-        if(error.status===400)
-          return Observable.throw(new BadInput(error))
-        else {
-          throw error;
-        }
-      })
+      .catch(this.handleError) //not called()! just referenced
   }
 
   updatePost(post){
@@ -42,12 +36,20 @@ export class PostService {
   deletePost(postId){
      return this.http.delete(this.url+'/'+postId)
      //.catch added by rxjs
-     .catch((error:Response) => { 
-       if(error.status===404){
-         return Observable.throw(new NotFoundError())
-       }
-       //Observable by rxjs
-        return Observable.throw(new AppError(error)) //send the error to the custom Error class
-     })
+     .catch(this.handleError) //not called()! just referenced
+  }
+
+  //global error mangament function
+  //private becus used internally by this class
+  private handleError(error:Response){
+    if(error.status===400)
+      return Observable.throw(new BadInput(error))
+
+    if(error.status===404){
+      return Observable.throw(new NotFoundError())
+    }
+    
+    //Observable by rxjs
+    return Observable.throw(new AppError(error)) //send the error to the custom Error class
   }
 }
