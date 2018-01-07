@@ -21,6 +21,8 @@ import { AddRecipeFormComponent } from './add-recipe-form/add-recipe-form.compon
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostService } from './services/post.service';
+import { AppErrorHandler } from './common/app-error-handler';
+import { ErrorHandler } from '@angular/core';
 
 @NgModule({
   //all the components and Pipes
@@ -54,7 +56,13 @@ import { PostService } from './services/post.service';
   //Singleton Pattern
   providers: [
     RecipesService,
-    PostService
+    PostService,
+    //AppErrorHandler 
+    //best to use a generic way
+    {
+      provide: ErrorHandler, 
+      useClass: AppErrorHandler
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -11,7 +11,7 @@ import { BadInput } from '../common/bad-input';
 export class PostService {
   //wrong url, error
   //private url = "https://xxxjsonplaceholder.typicode.com/posts";
-  private url = "https://jsonplaceholder.typicode.com/posts";
+  private url = "xxhttps://jsonplaceholder.typicode.com/posts";
 
   constructor(private http:Http) { 
 
@@ -19,6 +19,9 @@ export class PostService {
 
   getPosts(){
     return this.http.get(this.url)
+    .catch((error:Response)=>{
+          throw error;
+      })
   }
 
   createPosts(post){
@@ -26,6 +29,9 @@ export class PostService {
       .catch((error:Response)=>{
         if(error.status===400)
           return Observable.throw(new BadInput(error))
+        else {
+          throw error;
+        }
       })
   }
 

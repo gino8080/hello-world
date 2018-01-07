@@ -26,11 +26,7 @@ export class PostsComponent implements OnInit {
     .subscribe(
       (response)=>{
         this.posts = response.json();
-      },
-      (error)=>{
-        //alert("An Unexpected error");
-        console.log(error)
-    })
+      })
   }
 
   //lifecycle events component hooks
