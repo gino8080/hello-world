@@ -6,8 +6,8 @@
   </div>
   <div class="media-body">
     <h4 class="media-heading">
-      <!-- routerLink as property binding the param is an espression [routelink,params] -->
-      <a [routerLink]="['/followers',follower.id]">{{ follower.login }}</a>
+      <!-- routerLink as property binding the param is an espression [routelink,...params] -->
+      <a [routerLink]="['/followers',follower.id, follower.login]">{{ follower.login }}</a>
     </h4>
     <a href="follower.html_url">{{ follower.html_url }}</a>
   </div>
