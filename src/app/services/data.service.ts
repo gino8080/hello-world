@@ -42,7 +42,8 @@ export class DataService {
 
     return this.http.delete(this.url + '/' + id)
       .map(response => response.json())
-      .toPromise() //transformed to promise
+      //.toPromise() //transformed to promise
+      //.retry(3) //observable retry 3 times
       .catch(this.handleError);
       
   }
