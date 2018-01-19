@@ -1,9 +1,8 @@
+import { NotFoundError } from './../common/not-found-error';
+import { BadInput } from './../common/bad-input';
+import { AppError } from './../common/app-error';
+import { PostService } from './../services/post.service';
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../services/post.service';
-import { AppError } from '../common/app-error';
-import { NotFoundError } from '../common/not-found-error';
-import { BadInput } from '../common/bad-input';
-
 
 @Component({
   selector: 'app-posts',
@@ -11,75 +10,54 @@ import { BadInput } from '../common/bad-input';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
+  posts: any[];
 
-  posts :any[];
-  private url = "https://jsonplaceholder.typicode.com/posts";
-
-  //constructor should be small and fast
-  constructor(private service:PostService){
-    
+  constructor(private service: PostService) {
   }
 
-  //when found it's called onInit
-  ngOnInit(){
+  ngOnInit() {
     this.service.getAll()
-    .subscribe(
-      (response)=>{
-        this.posts = response.json();
-      })
+      //.subscribe(response => this.posts = response.json()) //old method
+      .subscribe(posts => this.posts = posts); //now they are mapped 
   }
 
-  //lifecycle events component hooks
-  createPost(input: HTMLInputElement){
-    let post = {
-      title: input.value
-      //description ... other values
-    }
+  createPost(input: HTMLInputElement) {
+    let post = { title: input.value };
     input.value = '';
-    this.service.create(JSON.stringify(post))
+
+    this.service.create(post)
       .subscribe(
-        (response)=>{
-          post['id'] = response.json().id; //['id'] to avoid ts error 
-          this.posts.splice(0,0,post)
-          console.log(response.json())
-        },
-      (error:Response)=>{
-        //alert("An Unexpected error");
-        if(error instanceof BadInput){
-          this.form.setErrors(error.json()) //not working just to explain the logic..
-        }else{
-           alert("An Unexpected error occurred");
-           console.log(error)
-        }        
-      })
+        newPost => {
+          post['id'] = newPost.id;
+            this.posts.splice(0, 0, post);
+          },
+          (error: AppError) => {
+            if (error instanceof BadInput) {
+              // this.form.setErrors(error.originalError);
+            }
+            else throw error;
+          });
   }
 
-  updatePost(post){
-    this.service.update(post).subscribe(response=>{
-        console.log(response.json())
-      })
+  updatePost(post) {
+    this.service.update(post)
+      .subscribe(
+        updatedPost => {
+          console.log(updatedPost);
+        });
   }
 
-  deletePost(post){
-    //no body on delete method
+  deletePost(post) {
     this.service.delete(post.id)
       .subscribe(
-      (response)=>{
-        console.log(response.json())
-        let index = this.posts.indexOf(post)
-        this.posts.splice(index,1);
-      },
-  
-      (error: AppError)=>{
-        //alert("An Unexpected error");
-        if(error instanceof NotFoundError){
-          alert("this post has already been deleted!")
-        }else{
-           alert("An Unexpected error occurred");
-           console.log(error)
-        }        
-      }
-    )
+        () => {
+          let index = this.posts.indexOf(post);
+          this.posts.splice(index, 1);
+        },
+        (error: AppError) => {
+          if (error instanceof NotFoundError)
+            alert('This post has already been deleted.');
+          else throw error;
+        });
   }
-
 }
