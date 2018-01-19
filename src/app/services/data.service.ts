@@ -36,9 +36,13 @@ export class DataService {
   }
 
   delete(id) {
-    return this.http.delete(this.url + '/' + id)
+    //simulate error on delete for the Optimistic update Rollout
+    return Observable.throw(new AppError());
+
+    /*return this.http.delete(this.url + '/' + id)
       .map(response => response.json())
       .catch(this.handleError);
+      */
   }
 
   private handleError(error: Response) {
