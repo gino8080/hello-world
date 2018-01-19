@@ -1,32 +1,20 @@
-import { 
-  Directive, 
-  HostListener, //to cast events
-  ElementRef,
-  Input
- } from '@angular/core';
-
+import { Directive, HostListener, ElementRef, Input } from '@angular/core';
 
 @Directive({
-  selector: '[appInputFormat]' //attrbute selector
+  selector: '[appInputFormat]'
 })
 export class InputFormatDirective {
-  @Input('appInputFormat') format : Input;
-
-  constructor(private el:ElementRef) { }
+  @Input('appInputFormat') format;
   
-  //@HostListener('eventName') 
-  @HostListener('focus') onFocus(){
-    console.log("on Focus");
-  }
+  constructor(private el: ElementRef) { }
 
-  @HostListener('blur') onBlur(){
-    console.log("on Blur");
+  @HostListener('blur') onBlur() {
     let value: string = this.el.nativeElement.value;
-    if(this.format=="'lowercase"){
-      this.el.nativeElement.value=value.toLowerCase();
-    }else{
-      this.el.nativeElement.value=value.toUpperCase();
-    }
+
+    if (this.format == 'lowercase')
+      this.el.nativeElement.value = value.toLowerCase();
+    else
+      this.el.nativeElement.value = value.toUpperCase();
   }
 
 

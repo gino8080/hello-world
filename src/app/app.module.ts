@@ -1,70 +1,97 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { GithubFollowersService } from './services/github-followers.service';
+import { AppErrorHandler } from './common/app-error-handler';
+import { PostService } from './services/post.service';
 import { HttpModule } from '@angular/http';
-import { NgModule } from '@angular/core';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms'; 
+import { SignupFormComponent } from './signup-form/signup-form.component';
+import { SummaryPipe } from './summary.pipe';
+import { AuthorsService } from './authors.service';
+import { CoursesService } from './courses.service';
+import { CoursesComponent } from './courses.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { RecipesComponent } from './recipes.component';
+import { CourseComponent } from './course/course.component';
+import { AuthorsComponent } from './authors/authors.component';
 import { FavoriteComponent } from './favorite/favorite.component';
-import { RecipeComponent } from './recipe/recipe.component'; //Auto Import plugin
-import { SummaryPipe } from './summary.pipe';
-import { TitleCasePipe } from './title-case.pipe';
 import { PanelComponent } from './panel/panel.component';
-import { LikeComponent } from './like/like.component';
 import { InputFormatDirective } from './input-format.directive';
+import { TitleCasePipe } from './title-case.pipe';
+import { LikeComponent } from './like/like.component';
 import { ZippyComponent } from './zippy/zippy.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
-import { NewRecipeFormComponent } from './new-recipe-form/new-recipe-form.component';
-import { SignupFormComponent } from './signup-form/signup-form.component';
-import { AddRecipeFormComponent } from './add-recipe-form/add-recipe-form.component';
+import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PostsComponent } from './posts/posts.component';
-import { PostService } from './services/post.service';
-import { AppErrorHandler } from './common/app-error-handler';
-import { ErrorHandler } from '@angular/core';
 import { GithubFollowersComponent } from './github-followers/github-followers.component';
-import { GithubFollowersService } from './services/github-followers.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { GithubProfileComponent } from './github-profile/github-profile.component';
+import { NotFoundComponent } from './not-found/not-found.component'; 
 
 @NgModule({
-  //all the components and Pipes
   declarations: [
     AppComponent,
-    RecipesComponent,
-    RecipeComponent,
-    FavoriteComponent,
+    SignupFormComponent,
+    CourseComponent,
+    CoursesComponent,
+    AuthorsComponent,
     SummaryPipe,
-    TitleCasePipe,
+    FavoriteComponent,
     PanelComponent,
-    LikeComponent,
     InputFormatDirective,
+    TitleCasePipe,
+    LikeComponent,
     ZippyComponent,
     ContactFormComponent,
-    NewRecipeFormComponent,
-    SignupFormComponent,
-    AddRecipeFormComponent,
+    NewCourseFormComponent,
     ChangePasswordComponent,
     PostsComponent,
-    PostsComponent,
-    GithubFollowersComponent
+    GithubFollowersComponent,
+    NavbarComponent,
+    HomeComponent,
+    GithubProfileComponent,
+    NotFoundComponent,
   ],
-  //Array of need module
   imports: [
-    BrowserModule, //needed for every browser app
+    BrowserModule,
     FormsModule,
-    ReactiveFormsModule, //needed for Reactive form
-    HttpModule //instead of importing Http as single provider
+    ReactiveFormsModule,
+    HttpModule,
+    RouterModule.forRoot([
+      //array of routes
+      //order is IMPORTANT!
+      {
+        path : "", //default route - No leading /
+        component : HomeComponent //the component to call at this route
+      },
+      {
+        path : "followers/:username", 
+        component : GithubProfileComponent 
+      },
+      {
+        path : "followers", 
+        component : GithubFollowersComponent 
+      },
+      {
+        path : "posts/", 
+        component : PostsComponent 
+      },
+      //last in order
+      {
+        path : "**", //wildcard any url in the browser 
+        component : NotFoundComponent 
+      }
+    ])
   ],
-  //List of all Dependencies used inthe components
-  //Singleton Pattern
   providers: [
     PostService,
-    GithubFollowersService
-    //AppErrorHandler 
-    //best to use a generic way
-    {
-      provide: ErrorHandler, 
-      useClass: AppErrorHandler
-    }
+    CoursesService,
+    AuthorsService,
+    GithubFollowersService,
+    { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
 })
