@@ -52,16 +52,25 @@ export class PostsComponent implements OnInit {
   }
 
   deletePost(post) {
+    //1 using promises intead of observable
+    //Delete and watch on NETWORK TAB
+    //without observable no requests are made 
+    this.service.delete(post.id)
+    
+    //2 with subscribe we do the request
+    //.subscribe();
+    //3 no subscribe for promises just .THEN() and CATCH(),
+    //with promises the request start without then or catch
+    //no needed subscribe()
+    
+    /*
     //optimistic update
     let index = this.posts.indexOf(post);
     this.posts.splice(index, 1);
 
     this.service.delete(post.id)
       .subscribe(
-        /*() => {
-           let index = this.posts.indexOf(post);
-           this.posts.splice(index, 1);
-        },*/
+        
         null,
         (error: AppError) => {
           this.posts.splice(index,0, post); //optimistic rollback if fail, we re-add the deleted post
@@ -70,5 +79,6 @@ export class PostsComponent implements OnInit {
             alert('This post has already been deleted.');
           else throw error;
         });
+      */
   }
 }

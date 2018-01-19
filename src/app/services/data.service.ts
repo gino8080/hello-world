@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map'; //map observable
+import 'rxjs/add/operator/toPromise'; //promise observable
 import 'rxjs/add/observable/throw';
 
 @Injectable()
@@ -20,13 +21,13 @@ export class DataService {
 
   create(resource) {
     //simulate error on create for the Optimistic update Rollout
-    return Observable.throw(new AppError());
+    //return Observable.throw(new AppError());
 
-    /*
+
     return this.http.post(this.url, JSON.stringify(resource))
       .map(response => response.json())
       .catch(this.handleError);
-      */
+     
   }
 
   update(resource) {
@@ -37,12 +38,13 @@ export class DataService {
 
   delete(id) {
     //simulate error on delete for the Optimistic update Rollout
-    return Observable.throw(new AppError());
+    //return Observable.throw(new AppError());
 
-    /*return this.http.delete(this.url + '/' + id)
+    return this.http.delete(this.url + '/' + id)
       .map(response => response.json())
+      .toPromise() //transformed to promise
       .catch(this.handleError);
-      */
+      
   }
 
   private handleError(error: Response) {
