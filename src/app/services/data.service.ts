@@ -19,9 +19,14 @@ export class DataService {
   }
 
   create(resource) {
+    //simulate error on create for the Optimistic update Rollout
+    return Observable.throw(new AppError());
+
+    /*
     return this.http.post(this.url, JSON.stringify(resource))
       .map(response => response.json())
       .catch(this.handleError);
+      */
   }
 
   update(resource) {

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core'
-import { RecipesService } from './recipes.service';
+//import { RecipesService } from './recipes.service';
 
 //decorator function
 @Component({
