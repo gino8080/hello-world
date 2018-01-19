@@ -12,17 +12,17 @@ export class GithubProfileComponent implements OnInit {
   constructor(private route:ActivatedRoute) { }
 
   ngOnInit() {
-  
-    this.route.paramMap //observables to get all route parameters
-      .subscribe(params =>{
-        console.log(params) 
-        //{ keys, username}
-        //username because the name of the route path : "followers/:username", 
+    //everytime the params change over time we are notified
+    //everytime we change page the component is destroyed 
+   console.log("GithubProfileComponent ON INIT")
+   //on the same page we can observe the paramMap for the changing paramas
+   this.route.paramMap.subscribe(params=>{
+     console.info(params.get("id"))
+   })
 
-        //params.get / has / getAll
-        let id = +params.get("id") //+ to cast string as a number
-        console.log("ID",id)
-      })
+   //usefull when reinitialized and if we don't have the NEXT/PREV button or navigate AWAY with back button
+   let snapShotID = this.route.snapshot.paramMap.get("id")
+   console.info("snapShotID",snapShotID)
   }
 
 }
