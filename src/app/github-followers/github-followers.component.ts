@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router/';
 import {Observable} from "rxjs/Observable"
 import "rxjs/add/observable/combineLatest" //method to combine multiple observables
+import "rxjs/add/operator/map" 
+import "rxjs/add/operator/switchMap" 
 
 @Component({
   selector: 'github-followers',
@@ -20,21 +22,18 @@ export class GithubFollowersComponent implements OnInit {
   ngOnInit() {
 
     //combine multiple observable into 1
-    let obs = Observable.combineLatest([
+    Observable.combineLatest([
       this.route.paramMap,
       this.route.queryParamMap
     ])
-    obs.subscribe(combined=>{
-      //required paramMap
+    //use switchMap operator to transorm the objects in an observable<any>
+    .switchMap(combined=>{
       let id = combined[0].get("id");
       let page = combined[1].get("page");
 
-      console.log(id, page)
-      //this.service.getAll({id:id, page:page}) //our getAll does not accept params, but this is the way!
-      this.service.getAll()
-        .subscribe(followers => this.followers = followers);
+      return this.service.getAll();
     })
-
+    .subscribe(followers => this.followers = followers )
    
   }
 }

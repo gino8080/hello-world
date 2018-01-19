@@ -14,6 +14,9 @@ export class DataService {
   constructor(private url: string, private http: Http) { }
 
   getAll() {
+    //1 hover mouse on this return ANY
+    //2 if we comment map and catch it returns OBESERVobservableABLES<Response> because http.get return observables<Response>
+    //3 if we comment only catch we get a return observable<ANY> because response.json() return observables<ANY>
     return this.http.get(this.url)
       .map(response => response.json())
       .catch(this.handleError);
