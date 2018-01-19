@@ -22,6 +22,8 @@ import { PostsComponent } from './posts/posts.component';
 import { PostService } from './services/post.service';
 import { AppErrorHandler } from './common/app-error-handler';
 import { ErrorHandler } from '@angular/core';
+import { GithubFollowersComponent } from './github-followers/github-followers.component';
+import { GithubFollowersService } from './services/github-followers.service';
 
 @NgModule({
   //all the components and Pipes
@@ -42,7 +44,8 @@ import { ErrorHandler } from '@angular/core';
     AddRecipeFormComponent,
     ChangePasswordComponent,
     PostsComponent,
-    PostsComponent
+    PostsComponent,
+    GithubFollowersComponent
   ],
   //Array of need module
   imports: [
@@ -55,6 +58,7 @@ import { ErrorHandler } from '@angular/core';
   //Singleton Pattern
   providers: [
     PostService,
+    GithubFollowersService
     //AppErrorHandler 
     //best to use a generic way
     {
