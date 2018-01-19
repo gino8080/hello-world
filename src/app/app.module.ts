@@ -76,7 +76,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
         component : GithubFollowersComponent 
       },
       {
-        path : "posts/", 
+        path : "posts", 
         component : PostsComponent 
       },
       //last in order
